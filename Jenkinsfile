@@ -30,6 +30,9 @@ pipeline {
             echo 'building the application'
             sh('./scripts/build.sh')
 
+            echo 'linux distribution:'
+            sh('cat /etc/os-release')
+
             echo 'testing the application (alpine)'
             sh('./scripts/test.sh')
           }
