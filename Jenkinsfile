@@ -50,7 +50,7 @@ pipeline {
         container('tools') {
           dir('project') {
             echo 'packaging the application'
-            sh('./scripts/package.sh')
+            sh('./scripts/package.sh x86_64-alpine')
           }
         }
       }
