@@ -30,7 +30,7 @@ pipeline {
 
             echo '/etc/os-release:'
             sh('cat /etc/os-release')
-            sh('cp /etc/os-release ./build/')
+            sh('cp /etc/os-release ./build/os-release')
 
             echo 'building the application'
             sh('./scripts/build.sh')
