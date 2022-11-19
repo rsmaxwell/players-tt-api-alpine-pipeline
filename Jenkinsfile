@@ -27,12 +27,12 @@ pipeline {
       steps {
         container('golang-alpine') {
           dir('project') {
+
+            echo '/etc/os-release:'
+            sh('cat /etc/os-release')
+
             echo 'building the application'
             sh('./scripts/build.sh')
-
-            echo 'linux distribution:'
-            sh('uname -a')
-            sh('cat /etc/os-release')
 
             echo 'testing the application (alpine)'
             sh('./scripts/test.sh')
@@ -41,16 +41,16 @@ pipeline {
       }
     }
 
-    stage('test') {
-      steps {
-        container('tools') {
-          dir('project') {
-            echo 'testing the application (ubuntu)'
-            sh('./scripts/test.sh')
-          }
-        }
-      }
-    }
+#     stage('test') {
+#       steps {
+#         container('tools') {
+#           dir('project') {
+#             echo 'testing the application (ubuntu)'
+#             sh('./scripts/test.sh')
+#           }
+#         }
+#       }
+#     }
 
     stage('package') {
       steps {
