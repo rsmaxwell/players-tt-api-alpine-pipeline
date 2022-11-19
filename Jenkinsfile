@@ -31,6 +31,7 @@ pipeline {
             sh('./scripts/build.sh')
 
             echo 'linux distribution:'
+            sh('uname -a')
             sh('cat /etc/os-release')
 
             echo 'testing the application (alpine)'
