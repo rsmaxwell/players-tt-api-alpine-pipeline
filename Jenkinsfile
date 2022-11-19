@@ -29,6 +29,9 @@ pipeline {
           dir('project') {
             echo 'building the application'
             sh('./scripts/build.sh')
+
+            echo 'testing the application (alpine)'
+            sh('./scripts/test.sh')
           }
         }
       }
@@ -38,7 +41,7 @@ pipeline {
       steps {
         container('tools') {
           dir('project') {
-            echo 'testing the application'
+            echo 'testing the application (ubuntu)'
             sh('./scripts/test.sh')
           }
         }
