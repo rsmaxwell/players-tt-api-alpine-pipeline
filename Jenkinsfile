@@ -30,11 +30,23 @@ pipeline {
 
             echo '/etc/os-release:'
             sh('cat /etc/os-release')
+            sh('cp /etc/os-release ./build/')
 
             echo 'building the application'
             sh('./scripts/build.sh')
 
             echo 'testing the application (alpine)'
+            sh('./scripts/test.sh')
+          }
+        }
+      }
+    }
+
+    stage('test') {
+      steps {
+        container('alpine') {
+          dir('project') {
+            echo 'testing the application (ubuntu)'
             sh('./scripts/test.sh')
           }
         }
