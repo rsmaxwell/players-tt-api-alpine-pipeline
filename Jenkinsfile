@@ -41,17 +41,6 @@ pipeline {
       }
     }
 
-#     stage('test') {
-#       steps {
-#         container('tools') {
-#           dir('project') {
-#             echo 'testing the application (ubuntu)'
-#             sh('./scripts/test.sh')
-#           }
-#         }
-#       }
-#     }
-
     stage('package') {
       steps {
         container('tools') {
