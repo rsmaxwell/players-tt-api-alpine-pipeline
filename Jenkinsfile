@@ -34,9 +34,6 @@ pipeline {
 
             echo 'building the application'
             sh('./scripts/build.sh')
-
-            echo 'testing the application (alpine)'
-            sh('./scripts/test.sh')
           }
         }
       }
@@ -46,7 +43,7 @@ pipeline {
       steps {
         container('alpine') {
           dir('project') {
-            echo 'testing the application (ubuntu)'
+            echo 'testing the application (alpine)'
             sh('./scripts/test.sh')
           }
         }
@@ -58,7 +55,7 @@ pipeline {
         container('tools') {
           dir('project') {
             echo 'packaging the application'
-            sh('./scripts/package.sh x86_64-alpine')
+            sh('./scripts/package.sh')
           }
         }
       }
