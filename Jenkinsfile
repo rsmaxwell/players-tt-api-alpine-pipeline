@@ -1,5 +1,3 @@
-def branch = "main"
-
 pipeline {
   agent {
     kubernetes {
@@ -15,11 +13,11 @@ pipeline {
             echo 'preparing the application'
             checkout([
               $class: 'GitSCM', 
-              branches: [[name: '*/${branch}']], 
+              branches: [[name: '*/main']], 
               extensions: [], 
               userRemoteConfigs: [[url: 'https://github.com/rsmaxwell/players-tt-api']]
             ])
-            sh('./scripts/prepare.sh ${branch}')
+            sh('./scripts/prepare.sh "main"')
           }
         }
       }
