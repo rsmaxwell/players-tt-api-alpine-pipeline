@@ -18,6 +18,12 @@ spec:
     - cat
     tty: true
 
+  - name: node
+    image: node:latest
+    command:
+    - cat
+    tty: true
+
   - name: golang
     image: golang:latest
     command:
